@@ -1,4 +1,4 @@
-Apache+PHP with Phing Build Pack
+Apache+PHP with Phing Build Pack for Symfony2 on Cloudcontrol
 ================================
 
 This is a fork of [Apache+PHP with Phing Build Pack](https://github.com/ryanbrainard/heroku-buildpack-phing), which is a fork of [PHP build pack](https://github.com/heroku/heroku-buildpack-php).
@@ -61,5 +61,5 @@ Pre-compiling binaries
 Meta
 ----
 
-Created by Pedro Belo and extended for Phing by Ryan Brainard.
-Many thanks to Keith Rarick for the help with assorted Unix topics :)
+Apache+PHP with Phing Build Pack was originally Created by Pedro Belo and extended for Phing by Ryan Brainard.
+This Fork for sf2 on cctrl was created by Ansgar Schuermann.

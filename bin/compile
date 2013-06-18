@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-# bin/compile <build-dir> <cache-dir>
+# bin/compile <bin-dir> <build-dir> <cache-dir>
+
+# the argument <bin-dir> holds the path to the compile file including "compile".
+# Example: /srv/tmp/custom_buildpack/bin/compile
+# The argument <build-dir> holds the path to where the build should be whilist the build process runs.
+# It is not the final destination.
+# The <cache-dir> is a directory designated to be used for caching. not more, nor less ;D
 
 echo " ---->CALLED HEROKU-BUILPACK-PHING-SYMFONY2-CCTRL:COMPILE WITH build-dir=$0 cache-dir=$1"
 echo ""
@@ -7,17 +13,20 @@ echo ""
 # fail fast
 set -e
 
-# config
+# ---- CONFIG
+# directories
 BIN_DIR=$(dirname $0)
 BUILD_DIR=$1
 CACHE_DIR=$2
+# LP_DIR is where the custom buildpack is located
 LP_DIR=`cd $(dirname $0); cd ..; pwd`
 
+# directory suffixes
 SOURCE_PATH="src"
 TARGET_PATH="target"
 PUBLIC_HTML_PATH="$TARGET_PATH/web"
-PRIVATE_PATH="$TARGET_PATH/private"
 
+# software versions/names/pathes
 APACHE_VERSION="2.2.22"
 APACHE_PATH="apache"
 PHP_VERSION="5.3.15"
@@ -29,11 +38,13 @@ REDIS_VERSION="2.2.1"
 REDIS_EXT="$EXT_PATH/redis.so"
 
 # include .files when moving things around
+# shopt sets shell options, -s says "enable" and "dotglob" is the options to include)
 shopt -s dotglob
 
+# change to the BUILD-DIR
 cd $BUILD_DIR
 
-# move everything pushed into source sub-directory
+# move everything pushed into source sub-directory (into the cash)
 mkdir -p $CACHE_DIR/$SOURCE_PATH
 mv * $CACHE_DIR/$SOURCE_PATH
 mv $CACHE_DIR/$SOURCE_PATH .
@@ -43,6 +54,7 @@ if [ -f $SOURCE_PATH/Procfile ]; then
   mv $SOURCE_PATH/Procfile .
 fi
 
+# ---- INSTALL
 APACHE_URL="https://s3.amazonaws.com/rbrainard-public/apache-$APACHE_VERSION.tar.gz"
 #APACHE_URL="https://s3.amazonaws.com/php-lp/apache-$APACHE_VERSION.tar.gz"
 echo "-----> Bundling Apache v$APACHE_VERSION"
@@ -62,6 +74,7 @@ REDIS_EXT_URL="https://s3.amazonaws.com/rbrainard-public/redis-$REDIS_VERSION.so
 echo "-----> Bundling Redis extension $REDIS_VERSION"
 curl --silent --max-time 60 --location $REDIS_EXT_URL > $REDIS_EXT
 
+# ---- CLEANUP
 #clean the cache
 rm -rf $CACHE_DIR
 mkdir $CACHE_DIR
@@ -74,6 +87,10 @@ cp $LP_DIR/conf/php.ini $PHP_PATH
 mkdir -p bin
 ln -s /app/php/bin/php bin/php
 
+# Present an overview of the dicrectory structure now
+echo "-----> Current Directory Structure"
+tree /
+
 # create the release script
 cat >>boot.sh <<EOF
 touch /app/apache/logs/error_log
@@ -85,7 +102,7 @@ tail -n 0 -F /app/$TARGET_PATH/app.log &
 export LD_LIBRARY_PATH=/app/php/ext
 export PHP_INI_SCAN_DIR=/app/$PUBLIC_HTML_PATH
 export PUBLIC_HTML_DIR=/app/$PUBLIC_HTML_PATH
-export PRIVATE_DIR=/app/$PRIVATE_PATH
+
 if [ -z "\${WEB_CONCURRENCY}" ]; then
   CPUS=\$(grep -c processor /proc/cpuinfo)
   export WEB_CONCURRENCY=\$(expr \$CPUS + \$CPUS)
@@ -97,13 +114,18 @@ EOF
 chmod +x boot.sh
 
 # do the phing thing
+
 export PHP_COMMAND="$BUILD_DIR/$PHP_PATH/bin/php"
 export PHING_HOME="$BUILD_DIR/$PHING_PATH"
 export PHP_CLASSPATH="$PHING_HOME/classes"
 export LD_LIBRARY_PATH="$BUILD_DIR/$PHP_PATH/ext"
 export PUBLIC_HTML_DIR="$BUILD_DIR/$PUBLIC_HTML_PATH"
-export PRIVATE_DIR="$BUILD_DIR/$PRIVATE_PATH"
+
 mkdir -p $PUBLIC_HTML_DIR
 mkdir -p $PRIVATE_DIR
 cd $BUILD_DIR/$SOURCE_PATH
 $BUILD_DIR/$PHING_PATH/bin/phing stage
+
+# Present an overview of the dicrectory structure now
+echo "-----> Final Directory Structure"
+tree /

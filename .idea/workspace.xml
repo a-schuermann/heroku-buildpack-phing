@@ -2,26 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4876432-4c1f-45e7-9173-e20a0da4ae86" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/heroku-buildpack-phing-symfony2-cctrl.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/build.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/compile" afterPath="$PROJECT_DIR$/bin/compile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/httpd.conf" afterPath="$PROJECT_DIR$/conf/httpd.conf" />
     </list>
     <ignored path="heroku-buildpack-phing-symfony2-cctrl.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="e4876432-4c1f-45e7-9173-e20a0da4ae86" time="1371551604956" ignored="false" />
     <file path="/httpd.conf" changelist="e4876432-4c1f-45e7-9173-e20a0da4ae86" time="1371554755341" ignored="false" />
     <file path="/build.xml" changelist="e4876432-4c1f-45e7-9173-e20a0da4ae86" time="1371552328596" ignored="false" />
-    <file path="/compile" changelist="e4876432-4c1f-45e7-9173-e20a0da4ae86" time="1371553084405" ignored="false" />
-    <file path="/README.md" changelist="e4876432-4c1f-45e7-9173-e20a0da4ae86" time="1371552563997" ignored="false" />
+    <file path="/compile" changelist="e4876432-4c1f-45e7-9173-e20a0da4ae86" time="1371561111394" ignored="false" />
+    <file path="/README.md" changelist="e4876432-4c1f-45e7-9173-e20a0da4ae86" time="1371556584914" ignored="false" />
     <file path="$PROJECT_DIR$/../ourpiece.com/ourpiece_lv1_alpha2/build.xml" changelist="e4876432-4c1f-45e7-9173-e20a0da4ae86" time="1371554830683" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,16 +35,16 @@
       <file leaf-file-name="httpd.conf" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/httpd.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="14" selection-start="4861" selection-end="4873" vertical-scroll-proportion="-12.038462">
+            <state line="135" column="37" selection-start="4739" selection-end="4739" vertical-scroll-proportion="-10.423077">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="54" selection-start="0" selection-end="2306" vertical-scroll-proportion="0.31352153">
+            <state line="27" column="54" selection-start="0" selection-end="2306" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -63,7 +53,7 @@
       <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="56" selection-start="941" selection-end="941" vertical-scroll-proportion="0.0">
+            <state line="33" column="24" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -87,10 +77,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compile" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="compile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/compile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="3" selection-start="2647" selection-end="2647" vertical-scroll-proportion="-13.576923">
+            <state line="129" column="19" selection-start="3799" selection-end="3799" vertical-scroll-proportion="0.91344666">
               <folding />
             </state>
           </provider>
@@ -115,10 +105,10 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/build.xml" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/bin/compile" />
         <option value="$PROJECT_DIR$/conf/httpd.conf" />
         <option value="$PROJECT_DIR$/example/build.xml" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/bin/compile" />
       </list>
     </option>
   </component>
@@ -183,6 +173,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heroku-buildpack-phing-symfony2-cctrl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heroku-buildpack-phing-symfony2-cctrl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -333,30 +337,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="56" selection-start="941" selection-end="941" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/compile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="3" selection-start="2647" selection-end="2647" vertical-scroll-proportion="-13.576923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conf/httpd.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="14" selection-start="4861" selection-end="4873" vertical-scroll-proportion="-12.038462">
+        <state line="135" column="37" selection-start="4739" selection-end="4739" vertical-scroll-proportion="-10.423077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="24" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="54" selection-start="0" selection-end="2306" vertical-scroll-proportion="0.31352153">
+        <state line="27" column="54" selection-start="0" selection-end="2306" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/compile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="19" selection-start="3799" selection-end="3799" vertical-scroll-proportion="0.91344666">
           <folding />
         </state>
       </provider>
