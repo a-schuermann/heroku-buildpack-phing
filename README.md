@@ -1,25 +1,18 @@
 Apache+PHP with Phing Build Pack
 ================================
 
-This is a build pack bundling PHP and Apache for Heroku apps built with Phing. The standard [PHP build pack](https://github.com/heroku/heroku-buildpack-php) takes your PHP source as is and deploys it directly to Apache, but this build pack runs a customized [Phing](http://www.phing.info/) build during the Git push before deploying to Apache. This is helpful for more complex PHP apps that require code generation or other preprocessing to prepare source code for deployment. 
-
+This is a fork of [Apache+PHP with Phing Build Pack](https://github.com/ryanbrainard/heroku-buildpack-phing), which is a fork of [PHP build pack](https://github.com/heroku/heroku-buildpack-php).
+It is created to use with [cctrl](http://www.cloudcontrolled.com/), but may be used with any other Plattform.
+Feel free to fork it to make your desired changes.
+Also feel free to contact me if you have any ideas to improve this fork.
 
 Usage
 -----
 
-Repositories should have a Phing build file called `build.xml` in their root directory with a `stage` target that deposits web-accessible files in the directory designated by the `PUBLIC_HTML_DIR` environment variable. Projects may also deposit files that should not be accessed by users in the directory designated by the `PRIVATE_DIR` environment variable. For example, here is a minimal `build.xml` that simply copies the source from the `src/main/php` directory for deployment:
-
-    <project name="Sample Phing Build" default="www">
-        <target name="stage">
-            <fail unless="env.PUBLIC_HTML_DIR" message="Enivronment variable PUBLIC_HTML_DIR must be set"/>
-            <copy todir="${env.PUBLIC_HTML_DIR}">
-                <fileset dir="src/main/php"/>
-            </copy>
-        </target>
-    </project>
-
-Of course, most builds would be more complex with file manipulations, mappings, or filtering. The `PUBLIC_HTML_DIR` and `PRIVATE_DIR` environment variables are also available at runtime for access by PHP scripts.
-
+Repositories should have a Phing build file called `build.xml` in their root directory with a `stage` target that
+deposits files to the "target" directory and also calls the "build" target which can do all the other work like i.e.
+updating the database, warming up the cache etc.tt.
+An example for symfony2 projects is attatched with this fork.
 
 Configuration
 -------------

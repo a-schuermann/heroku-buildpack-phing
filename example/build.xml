@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="example" default="build">
+
+    <!-- ============================================  -->
+    <!-- Target: build                                 -->
+    <!-- ============================================  -->
+    <target name="build" depends="">
+
+        <echo msg="Pulling git repository" />
+        <exec command="git pull" dir=""/>
+
+        <phingcall target="doctrine"/>
+        <phingcall target="composer"/>
+        <phingcall target="cache"/>
+        <phingcall target="rights"/>
+        <phingcall target="assetic"/>
+
+    </target>
+
+    <target name="stage">
+        <exec command="tree -d /" dir="" />
+        <fail unless="env.PUBLIC_HTML_DIR" message="Enivronment variable PUBLIC_HTML_DIR must be set"/>
+
+        <echo msg="Calling BUILD target" />
+        <phingcall target="build"/>
+
+        <echo msg="Copying from /srv/tmp/builddir/target/ to ${env.PUBLIC_HTML_DIR}" />
+        <copy todir="app/target/">
+            <fileset dir="/srv/tmp/builddir/target/"/>
+        </copy>
+        <echo msg=" -----> That'll be all!" />
+    </target>
+
+    <target name="rights">
+        <echo msg="Setting rights" />
+        <exec command="sudo setfacl -R -m u:dev:rwx -m u:www-data:rwx app/cache web/img web/media web/proc_img web/js web/css" dir=""/>
+        <exec command="sudo setfacl -dR -m u:dev:rwx -m u:www-data:rwx app/cache web/img web/media web/proc_img web/js web/css" dir=""/>
+    </target>
+
+    <target name="composer">
+        <echo msg="Updating composer" />
+        <exec command="php composer.phar install" dir=""/>
+    </target>
+
+    <target name="doctrine">
+        <echo msg="Updating tables" />
+        <exec command="php app/console doctrine:schema:update --force --complete" dir=""/>
+    </target>
+
+    <target name="cache">
+        <echo msg="Clearing Cache" />
+        <exec command="php app/console cache:clear --no-optional-warmers --no-warmup --env=dev_cache" dir=""/>
+    </target>
+
+    <target name="assetic">
+        <echo msg="Building Assets Cache for dev_cache" />
+        <exec command="php app/console assetic:dump --no-debug --force --env=dev_cache" dir=""/>
+        <echo msg="Building Assets Cache for dev" />
+        <exec command="php app/console assetic:dump --force --env=dev" dir=""/>
+    </target>
+
+</project>

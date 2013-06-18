@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
+echo " ---->CALLED HEROKU-BUILPACK-PHING-SYMFONY2-CCTRL:COMPILE WITH build-dir=$0 cache-dir=$1"
+echo ""
+
 # fail fast
 set -e
 
@@ -12,7 +15,7 @@ LP_DIR=`cd $(dirname $0); cd ..; pwd`
 
 SOURCE_PATH="src"
 TARGET_PATH="target"
-PUBLIC_HTML_PATH="$TARGET_PATH/public_html"
+PUBLIC_HTML_PATH="$TARGET_PATH/web"
 PRIVATE_PATH="$TARGET_PATH/private"
 
 APACHE_VERSION="2.2.22"
